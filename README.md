@@ -1,2 +1,1 @@
-# Chatty
-Django Chat App
+"# Chatty" 
