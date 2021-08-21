@@ -1,0 +1,2 @@
+# Chatty
+Django Chat App
