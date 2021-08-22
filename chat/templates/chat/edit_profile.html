@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<style>
+  * {
+      padding: 0;
+      margin: 0;
+  }
+  nav {
+      background-color: rgb(13, 201, 185);
+      height: 50px;
+  }
+  nav ul li {
+    list-style-type: none;
+      width: 150px;
+      float: left;
+      border-right: 1px solid #ccc;
+      text-align: center;
+  }
+  nav ul li a {
+    text-decoration: none;
+      color: white;
+      line-height: 50px;
+      display: block;
+  }
+  nav ul li a:hover {
+      background-color: rgb(68, 198, 238);
+      color: rgb(68, 105, 97);
+  }
+  .topnav-right {
+      float: right;
+  } 
+</style>
+<nav>
+  <ul>
+      
+      <li><a href='{% url 'home' %}'>Home</a></li>
+      <div class="topnav-right">
+          <li><a href='{% url 'logout' %}'>Logout</a></li>
+          
+        </div>
+    </ul>
+
+</nav>
+  <h2>Edit Profile</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Edit and Save</button>
+  </form>
